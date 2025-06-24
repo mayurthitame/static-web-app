@@ -83,5 +83,5 @@ Then log out and log back in.
 ## 🧑‍🏫 Maintainer
 
 **Balaji Reddy Lachhannagri**  
-Senior DevOps Trainer – Rushi Technologies  
-Email: rushitechtraining@gmail.com
+Senior DevOps Architect – Rushi Technologies  
+
