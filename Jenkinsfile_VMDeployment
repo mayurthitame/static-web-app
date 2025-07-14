@@ -21,7 +21,7 @@ pipeline {
 
         stage('Deploy to Nginx Server') {
             steps {
-                sshagent([${NGINX_SERVER_SSH_KEY}]) {
+                sshagent(["${NGINX_SERVER_SSH_KEY}"]) {
                    sh """
                     echo 'Deploying to Nginx server...'
                     ssh -o StrictHostKeyChecking=no ${SSH_USER}@${NGINX_SERVER_IP} sudo rm -rf /usr/share/nginx/html/*
