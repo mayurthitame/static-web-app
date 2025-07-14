@@ -1,0 +1,38 @@
+pipeline {
+
+    agent any
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                Checkout scm
+            }
+        }
+        stage('Deploy to Nginx Server') {
+            steps {
+                sshagent(['Nginx_Server_SSHKey']) {
+                   sh """
+                    echo 'Deploying to Nginx server...'
+                    ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.212 sudo rm -rf /usr/share/nginx/html/*
+                    scp -o StrictHostKeyChecking=no -r * user@nginx-server:/usr/share/nginx/html/
+                    echo 'Restarting Nginx service...'
+                    sleep 15
+                    ssh ec2-user@172.31.17.212 sudo systemctl restart nginx
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up...'
+            cleanWs()
+        }
+        success {
+            echo 'Send Success Notification...'
+        }
+        failure {
+            echo 'Send Success Notification...'
+    }
+}
