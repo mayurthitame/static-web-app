@@ -8,7 +8,16 @@ pipeline {
         SSH_USER = 'ec2-user'
         NGINX_SERVER_PATH = '/usr/share/nginx/html/'
     }
-        
+    
+    triggers {
+        githubPush()
+    }
+
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
+    }
+
     
 
     stages {
