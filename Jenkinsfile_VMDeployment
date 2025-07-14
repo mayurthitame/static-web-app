@@ -25,7 +25,7 @@ pipeline {
                    sh """
                     echo 'Deploying to Nginx server...'
                     ssh -o StrictHostKeyChecking=no ${SSH_USER}@${NGINX_SERVER_IP} sudo rm -rf /usr/share/nginx/html/*
-                    scp -o StrictHostKeyChecking=no -r * ${SSH_USER}@${NGINX_SERVER_IP}:/usr/share/nginx/html/
+                    sudo scp -o StrictHostKeyChecking=no -r * ${SSH_USER}@${NGINX_SERVER_IP}:/usr/share/nginx/html/
                     echo 'Restarting Nginx service...'
                     sleep 15
                     ssh ${SSH_USER}@${NGINX_SERVER_IP} sudo systemctl restart nginx
