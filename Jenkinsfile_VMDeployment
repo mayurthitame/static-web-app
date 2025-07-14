@@ -3,11 +3,13 @@ pipeline {
     agent any
 
     stages {
+
         stage('Git Checkout') {
             steps {
                 Checkout scm
             }
         }
+
         stage('Deploy to Nginx Server') {
             steps {
                 sshagent(['Nginx_Server_SSHKey']) {
@@ -34,5 +36,6 @@ pipeline {
         }
         failure {
             echo 'Send Success Notification...'
+        }
     }
 }
