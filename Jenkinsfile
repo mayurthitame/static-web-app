@@ -26,8 +26,7 @@ pipeline
             steps
             {
                 sh """
-                    //remove existing files
-                    ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} rm -rf /usr/share/nginx/html/*
+                    ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} rm -rf /usr/share/nginx/html/* || true
                     scp -o StrictHostKeyChecking=no -r * ${NGINX_USER}@${NGINX_IP}:/usr/share/nginx/html/
                 """
             }
