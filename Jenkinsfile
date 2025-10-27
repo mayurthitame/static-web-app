@@ -28,7 +28,7 @@ pipeline
                   sshagent(['TomcatServer_SSH_Credentials']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} sudo rm -rf /usr/share/nginx/html/* || true
-                        scp -o StrictHostKeyChecking=no * ${NGINX_USER}@${NGINX_IP}:/home/ec2-user/
+                        scp -o StrictHostKeyChecking=no -r * ${NGINX_USER}@${NGINX_IP}:/home/ec2-user/
                         ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} "sudo mv /home/ec2-user/* /usr/share/nginx/html/"
                     """
                 }
