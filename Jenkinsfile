@@ -26,7 +26,7 @@ pipeline
             steps
             {
                 sh """
-                    ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} rm -rf /usr/share/nginx/html/* || true
+                    ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} sudo rm -rf /usr/share/nginx/html/* || true
                     scp -o StrictHostKeyChecking=no -r * ${NGINX_USER}@${NGINX_IP}:/usr/share/nginx/html/
                 """
             }
