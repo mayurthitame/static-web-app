@@ -5,7 +5,7 @@ pipeline
     triggers{
         githubPush()
     }
-    
+
     environment
     {
         NGINX_IP = "13.61.15.247"
@@ -13,13 +13,13 @@ pipeline
     }
 
     stages{
-        stage('Clone Repository')
-        {
-            steps
-            {
-                git "https://github.com/mayurthitame/static-web-app.git"
-            }
-        }
+        // stage('Clone Repository')
+        // {
+        //     steps
+        //     {
+        //         git "https://github.com/mayurthitame/static-web-app.git"
+        //     }
+        // }
 
         stage('Upload to nginx  server')
         {
