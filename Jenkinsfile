@@ -13,14 +13,6 @@ pipeline
     }
 
     stages{
-        // stage('Clone Repository')
-        // {
-        //     steps
-        //     {
-        //         git "https://github.com/mayurthitame/static-web-app.git"
-        //     }
-        // }
-
         stage('Upload to nginx  server')
         {
             steps
@@ -33,6 +25,13 @@ pipeline
                     """
                 }
             }
+        }
+    }
+    post
+    {
+        always
+        {
+            echo 'SUCCESS'
         }
     }
 }
