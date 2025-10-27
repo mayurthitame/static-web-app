@@ -29,7 +29,7 @@ pipeline
                     sh """
                         ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} sudo rm -rf /usr/share/nginx/html/* || true
                         scp -o StrictHostKeyChecking=no -r * ${NGINX_USER}@${NGINX_IP}:/home/ec2-user/static-web-app/
-                        ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} "sudo mv /home/ec2-user/static-web-app/* /usr/share/nginx/html/"
+                        ssh -o StrictHostKeyChecking=no ${NGINX_USER}@${NGINX_IP} "sudo mv -f /home/ec2-user/static-web-app/* /usr/share/nginx/html/"
                     """
                 }
             }
