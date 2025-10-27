@@ -2,7 +2,10 @@ pipeline
 {
     agent any
     
-    push
+    triggers{
+        githubPush()
+    }
+    
     environment
     {
         NGINX_IP = "13.61.15.247"
